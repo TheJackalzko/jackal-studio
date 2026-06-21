@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap');
+
+:root {
+  --color-abysse: #0A0F0D;
+  --color-membrane: #F2EDE3;
+  --color-plasma: #3EFFC0;
+  --color-tissu: #FF7A68;
+  --color-synapse: #8B5CF6;
+  --color-encre: #14201C;
+
+  /* Dynamic values updated by CytoplasmCanvas JS */
+  --cytoplasm-r: 62;
+  --cytoplasm-g: 255;
+  --cytoplasm-b: 192;
+}
+
+/* Hide default cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-abysse);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Switzer', system-ui, sans-serif;
+  color: var(--color-membrane);
+  background: transparent;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Organic border radius utilities ─────────────────────── */
+.radius-organic-1 { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+.radius-organic-2 { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+.radius-organic-3 { border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%; }
+.radius-organic-4 { border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%; }
+.radius-organic-5 { border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%; }
+
+/* ─── Glow utilities ──────────────────────────────────────── */
+.glow-plasma {
+  box-shadow:
+    0 0 30px rgba(62, 255, 192, 0.12),
+    0 0 60px rgba(62, 255, 192, 0.06),
+    inset 0 0 20px rgba(62, 255, 192, 0.04);
+}
+.glow-tissu {
+  box-shadow:
+    0 0 30px rgba(255, 122, 104, 0.15),
+    0 0 60px rgba(255, 122, 104, 0.07);
+}
+.glow-synapse {
+  box-shadow:
+    0 0 40px rgba(139, 92, 246, 0.2),
+    0 0 80px rgba(139, 92, 246, 0.1);
+}
+
+/* ─── Focus visible ───────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-plasma);
+  outline-offset: 6px;
+  border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--color-abysse); }
+::-webkit-scrollbar-thumb {
+  background: rgba(62, 255, 192, 0.4);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-plasma); }
+
+/* ─── Reduced motion overrides ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Selection ───────────────────────────────────────────── */
+::selection {
+  background: rgba(62, 255, 192, 0.25);
+  color: var(--color-membrane);
+}
+
+/* ─── Membrane section base ───────────────────────────────── */
+.section-membrane {
+  background: var(--color-membrane);
+  color: var(--color-encre);
+}
+
+/* ─── Text gradient plasma ────────────────────────────────── */
+.text-gradient-plasma {
+  background: linear-gradient(135deg, #3EFFC0 0%, #00d4a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-tissu {
+  background: linear-gradient(135deg, #FF7A68 0%, #ff5240 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Eyebrow label ───────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* ─── Membrane divider (SVG wave) ─────────────────────────── */
+.membrane-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.membrane-divider svg {
+  display: block;
+  width: 100%;
+}

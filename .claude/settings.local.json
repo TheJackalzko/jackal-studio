@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "Bash(npm run *)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(sleep 4 && cat /tmp/nextjs_dev.log)",
+      "Read(//private/tmp/**)",
+      "Bash(node -e \"require\\('./node_modules/next/package.json'\\)\")"
+    ]
+  }
+}
