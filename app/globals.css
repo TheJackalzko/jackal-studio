@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Couleurs */
+  --color-ink: #0b0b0d;
+  --color-paper: #faf8f5;
+  --color-gold: #c9a227;
+  --color-silver: #8e8e93;
+  --color-line: rgba(255, 255, 255, 0.08);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Typographie */
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-sans: var(--font-inter), Helvetica, Arial, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-72: 4.5rem;
+  --text-72--line-height: 1.05;
+  --text-56: 3.5rem;
+  --text-56--line-height: 1.1;
+  --text-40: 2.5rem;
+  --text-40--line-height: 1.15;
+  --text-28: 1.75rem;
+  --text-28--line-height: 1.3;
+  --text-20: 1.25rem;
+  --text-20--line-height: 1.5;
+  --text-17: 1.0625rem;
+  --text-17--line-height: 1.7;
+  --text-14: 0.875rem;
+  --text-14--line-height: 1.5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-17);
+  line-height: 1.7;
+}
+
+/* Reveal au scroll : opacity + 12px de translate, rien de plus. */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 250ms ease-out,
+    transform 250ms ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
